@@ -1,24 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
+	const generalStyle = "bg-secondary rounded-circle";
+	const redStyle = "bg-danger rounded-circle"
+	const yellowStyle = "bg-warning rounded-circle"
+	const greenStyle = "bg-success rounded-circle"
+	const lightSizingStyle = {
+		height: "70px", 
+		width:"70px"
+	}
+
+
+	const [activatedRed, setActivedRed] = useState(generalStyle)
+	const [activatedYellow, setActivedYellow] = useState(generalStyle)
+	const [activatedGreen, setActivedGreen] = useState(generalStyle)
+
+    const activeRed = () => {
+		setActivedRed(redStyle)
+		setActivedYellow(generalStyle)
+		setActivedGreen(generalStyle)	
+		
+	}
+
+	const activeYellow = () => {
+		setActivedRed(generalStyle)
+		setActivedYellow(yellowStyle)
+		setActivedGreen(generalStyle)		
+		
+	}
+
+	const activeGreen = () => {
+		setActivedRed(generalStyle)
+		setActivedYellow(generalStyle)
+		setActivedGreen(greenStyle)		
+		
+	}
+	
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="bg-black container m-auto p-3" style={{height: "250px", width:"100px"}}>
+			<div  onClick={activeRed} className= {activatedRed} style={lightSizingStyle}></div>
+			<div  onClick={activeYellow} className= {activatedYellow} style={lightSizingStyle}></div>
+			<div  onClick={activeGreen} className= {activatedGreen} style={lightSizingStyle}></div>
 		</div>
 	);
 };
